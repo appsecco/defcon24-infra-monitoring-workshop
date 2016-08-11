@@ -6,7 +6,7 @@ This repository contains all the presentation, documentation and the configurati
 
 - Brief blog post about the release on [Medium](https://medium.com/@riyazwalikar/releasing-the-contents-of-our-ninja-level-infrastructure-monitoring-defcon24-workshop-140518beb47d)
 
-- Read the documentation by navigating to `documentation/start.html`
+- Read the documentation by navigating to `documentation/start.md`
 
 **Contents**
 
