@@ -4,6 +4,8 @@ This repository contains all the presentation, documentation and the configurati
 
 - Here is the workshop details, which we ([Madhu Akula](https://github.com/madhuakula) & [Riyaz Walikar](https://github.com/riyazwalikar)) presented at Defcon24. [https://defcon.org/html/defcon-24/dc-24-workshops.html#Akula](https://defcon.org/html/defcon-24/dc-24-workshops.html#Akula)
 
+- Brief blog post about the release on [Medium](https://medium.com/@riyazwalikar/releasing-the-contents-of-our-ninja-level-infrastructure-monitoring-defcon24-workshop-140518beb47d)
+
 - Read the documentation by navigating to `documentation/start.html`
 
 **Contents**
