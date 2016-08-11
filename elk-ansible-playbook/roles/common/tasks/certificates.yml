@@ -1,0 +1,10 @@
+---
+- name: creating certs directory
+  file: path=/etc/pki/tls/{{ item }} state=directory mode=0755
+
+  items:
+    - certs
+    - private
+
+- name: generating openssl certificates for logstash using domain name
+  raw: "openssl req -subj '/CN={{ server_domain_name }}/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt"

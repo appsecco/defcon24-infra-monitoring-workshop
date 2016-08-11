@@ -1,0 +1,19 @@
+---
+- name: adding elasticsearch gpg key for logstash
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- name: adding logstash to debian repository
+  apt_repository: repo='deb https://packages.elastic.co/logstash/2.3/debian stable main' state=present
+
+- name: installing logstash
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items:
+    - logstash
+
+- name: adding logstash to startup programs  
+  # Run sudo update-rc.d logstash defaults 95 10
+  service: name=logstash enabled=yes
+  
+  notify:
+   - start logstash

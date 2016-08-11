@@ -1,0 +1,19 @@
+---
+- name: adding elasticsearch gpg key for kibana
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- name: adding logstash to debian kibana
+  apt_repository: repo='deb http://packages.elastic.co/kibana/4.5/debian stable main' state=present
+
+- name: installing kibana
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items:
+    - kibana
+
+- name: adding kibana to startup programs  
+  # Run sudo update-rc.d kibana defaults 95 10
+  service: name=kibana enabled=yes
+  
+  notify:
+   - start kibana

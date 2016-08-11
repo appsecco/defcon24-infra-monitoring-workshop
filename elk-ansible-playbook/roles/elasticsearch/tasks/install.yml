@@ -1,0 +1,19 @@
+---
+- name: adding elasticsearch gpg key for elasticsearch
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- name: adding the elasticsearch debain repository
+  apt_repository: repo='deb https://packages.elastic.co/elasticsearch/2.x/debian stable main' state=present
+  
+- name: installing elasticsearch 
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items:
+    - elasticsearch
+  
+  # Run sudo update-rc.d elasticsearch defaults 95 10
+- name: adding into the startup programs
+  service: name=elasticsearch enabled=yes
+  
+  notify:
+   - start elasticsearch

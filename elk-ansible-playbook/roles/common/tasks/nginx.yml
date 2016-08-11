@@ -1,0 +1,13 @@
+---
+- name: Htpasswd generation for kibana
+  #command: htpasswd -c /etc/nginx/htpasswd.users 
+  htpasswd: path=/etc/nginx/htpasswd-kibana.users name={{ basic_auth_kibana_username }} password={{ basic_auth_kibana_password }} owner=root group=root mode=0644
+
+- name: Htpasswd generation for elasticsearch
+  htpasswd: path=/etc/nginx/htpasswd-es.users name={{ basic_auth_es_username }} password={{ basic_auth_es_password }} owner=root group=root mode=0644
+
+- name: Nginx Virtualhost configuration
+  action: template src=templates/nginxdefault.j2 dest=/etc/nginx/sites-available/default
+
+  notify:
+    - restart nginx

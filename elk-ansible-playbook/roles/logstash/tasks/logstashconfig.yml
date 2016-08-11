@@ -1,0 +1,22 @@
+---
+- name: logstash configuration file tweaking
+  action: template src=templates/{{ item.src }} dest=/etc/logstash/conf.d/{{ item.dst }}
+
+  with_items:
+    - { src: '02-beats-input.conf', dst: '02-beats-input.conf' }
+    - { src: '10-sshlog-filter.conf', dst: '10-sshlog-filter.conf' }
+    - { src: '11-weblog-filter.conf', dst: '11-weblog-filter.conf' }
+    - { src: '30-elasticsearch-output.conf', dst: '10-elasticsearch-output.conf' }
+  
+#- name: logstash configuration test
+#  command: /opt/logstash/bin/logstash -f /etc/logstash/conf.d/{{ item }} --configtest
+
+#  with_items:
+#    - logstash-auth-log.conf
+#    - logstash-apache-log.conf
+  
+#- name: forward the logstash configuration
+#  command: /opt/logstash/bin/logstash -f /etc/logstash/conf.d/
+
+  notify:
+    - Restart Logstash

@@ -1,0 +1,5 @@
+---
+- include: install.yml
+- include: esconfig.yml
+- include: plugins.yml
+- include: curator.yml

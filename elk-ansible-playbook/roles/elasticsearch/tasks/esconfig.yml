@@ -1,0 +1,12 @@
+---
+- name: elasticsearch.yml configuration changes
+  action: template src=templates/elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
+
+#- name: limits.conf tuning
+#  lineinfile: dest=/etc/security/limits.conf line="{{ item }}" 
+#  with_items:
+#    - 'elasticsearch soft nofile 32000'
+#    - 'elasticsearch hard nofile 32000'
+
+  notify:
+    - restart elasticsearch

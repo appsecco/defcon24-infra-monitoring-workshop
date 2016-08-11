@@ -1,0 +1,31 @@
+filebeat:
+  prospectors:
+    -
+      paths:
+        - /var/log/auth.log
+      #  - /var/log/syslog
+      #  - /var/log/*.log
+    
+      document_type: sshlog
+
+    - 
+      paths:
+        - /var/log/access.log
+
+      document_type: weblog
+
+  registry_file: /var/lib/filebeat/registry
+
+output:
+  logstash:
+    hosts: ["logstash_server_private_ip:5044"]
+    bulk_max_size: 1024
+
+    tls:
+      certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+
+shipper:
+
+logging:
+  files:
+    rotateeverybytes: 10485760 # = 10MB

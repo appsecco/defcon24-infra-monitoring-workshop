@@ -1,0 +1,3 @@
+---
+- include: kibanainstall.yml
+- include: kibanaconfig.yml

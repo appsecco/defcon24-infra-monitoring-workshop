@@ -1,0 +1,21 @@
+---
+- name: oracle java license accept 
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: adding apt repo for oracle java
+  apt_repository: repo='ppa:webupd8team/java' state=present update_cache=yes
+
+- name: install java wget nginx apache2 and utils
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items:
+    - oracle-java8-installer
+    - nginx
+    - apache2-utils
+    - python-pip
+    - git
+    - python-passlib
+
+
+#- include: certificates.yml
+- include: nginx.yml

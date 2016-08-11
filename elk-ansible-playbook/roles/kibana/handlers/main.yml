@@ -1,0 +1,12 @@
+---
+- name: start kibana
+  service: name=kibana state=started
+
+- name: restart kibana
+  service: name=kibana state=restarted
+
+- name: Restart Nginx
+  service: name=nginx state=restarted
+
+- name: Restart Elasticsearch
+  service: name=elasticsearch state=restarted

@@ -1,0 +1,24 @@
+---
+- name: adding elasticsearch gpg key for curator
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- name: adding curator debian package to the repository
+  apt_repository: repo='deb http://packages.elastic.co/curator/3/debian stable main' state=present
+
+- name: installating the curator 
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items:
+    - python-elasticsearch-curator
+  
+  notify:
+    - restart elasticsearch
+
+- name: creating backups directory for elasticsearch indexes snapshots
+  file: path='/var/backups/elasticsearch/' state=directory group=elasticsearch owner=elasticsearch
+
+- name: copying curator snapshot backup script
+  action: template src=templates/curator_snapshot.sh.j2 dest=/tmp/curator_snapshot.sh mode=0755
+
+#- name: executing curator backup snapshot script
+#  shell: /tmp/curator_snapshot.sh >> curator_snapshot_exec.log

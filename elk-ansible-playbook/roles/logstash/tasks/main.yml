@@ -1,0 +1,3 @@
+---
+- include: logstashinstall.yml
+- include: logstashconfig.yml

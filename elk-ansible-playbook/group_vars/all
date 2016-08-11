@@ -1,0 +1,7 @@
+remote_user_login_name: madhuakula
+server_domain_name: elk.site.cloud.com
+basic_auth_kibana_username: kiabnasiteadminelk
+basic_auth_kibana_password: E1kP@S$w0rd@643Vn324
+basic_auth_es_username: essiteadminelk
+basic_auth_es_password: E1GgnogPO4kP@S$w0rd@643Vn324
+elasticsearch_host_address: localhost

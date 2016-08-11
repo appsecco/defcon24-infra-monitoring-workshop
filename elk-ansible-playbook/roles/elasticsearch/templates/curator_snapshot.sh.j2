@@ -1,0 +1,7 @@
+curl -XPUT 'http://localhost:9200/_snapshot/backup' -d '{
+"type": "fs",
+"settings": {
+"location": "/var/backups/elasticsearch/",
+"compress": true
+}
+}'

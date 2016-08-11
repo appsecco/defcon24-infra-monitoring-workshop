@@ -1,0 +1,11 @@
+---
+- name: ELK stack installation
+  hosts: all
+  remote_user: '{{ remote_user_login_name }}'
+  become: yes
+
+  roles:
+    - common
+    - elasticsearch
+    - logstash
+    - kibana

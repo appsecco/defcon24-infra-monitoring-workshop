@@ -1,0 +1,9 @@
+---
+- name: installing elasticsearch plugins
+  command: /usr/share/elasticsearch/bin/plugin install {{ item }}
+
+  with_items:
+    - mobz/elasticsearch-head
+    - royrusso/elasticsearch-HQ
+
+  ignore_errors: true

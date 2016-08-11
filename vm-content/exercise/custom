@@ -1,0 +1,17 @@
+#custom
+NASPORT [\w]{3}[0-9]+
+COMMAND (.*)
+PAMESSAGE .*,TRAFFIC,.*
+PADATETIME %{SYSLOGTIMESTAMP}|%{TIMESTAMP_ISO8601}
+
+CISCOPROG (?:%[\w._/-]+)
+CISCOTIMESTAMP %{MONTH} +%{MONTHDAY}(?: %{YEAR})? %{TIME}(?: %{WORD})?
+CISCOBASE (?:%{NUMBER:counter})?: (?:%{SYSLOGHOST:logsource}: )?(:?\*)?%{CISCOTIMESTAMP:device_timestamp}: (?:%{CISCOPROG:program}:)?
+
+CISCOLINE %{CISCOBASE} %{GREEDYDATA:message}
+ASA %ASA-
+FACILITY [A-Z0-9]+[^-]|[A-Z0-9]+[^-]-[A-Z0-9]+[^-]
+SEVERITY [0,1,2,3,4,5,6,7]
+MNEMONIC [A-Z0-9]+[^:]
+CISCOFACSEVMNEM %%{FACILITY:facility}-%{SEVERITY:severity}-%{MNEMONIC:mnemonic}:
+IPPROTOCOL (tcp|udp|icmp)

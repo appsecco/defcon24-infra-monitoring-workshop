@@ -1,0 +1,5 @@
+elasticsearch_cluster_name: company-elasticsearch-cloud-prod
+elasticsearch_node_name: elk-node-all
+bootstrap_mlock_value: true
+network_host_info: localhost
+back_path_repo: /var/backups/elasticsearch

@@ -1,0 +1,8 @@
+---
+- name: Kibana configuration file tweaking
+  action: template src=templates/kibanaconfig.j2 dest=/opt/kibana/config/kibana.yml
+
+  notify:
+    - Restart Kibana
+    - Restart Nginx
+    - Restart Elasticsearch
