@@ -2,7 +2,7 @@
 - name: start kibana
   service: name=kibana state=started
 
-- name: restart kibana
+- name: Restart Kibana
   service: name=kibana state=restarted
 
 - name: Restart Nginx
