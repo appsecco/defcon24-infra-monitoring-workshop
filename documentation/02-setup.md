@@ -196,6 +196,7 @@ curl -XGET 'http://localhost:9200/_cluster/health?pretty'
 
 curl -XGET 'http://localhost:9200/_cluster/state?pretty'
 ```
+
 <br />
 <div style="font-size:15px" align="left">
 - <font color="green">`green`</font> - All primary and replica shards are active.
