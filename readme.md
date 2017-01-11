@@ -17,4 +17,5 @@ This repository contains all the presentation, documentation and the configurati
 - *vm-content* : all the files in the virtual machine (logs, configurations, etc)
 
 **Note**
+
 We have added some additonal modules presented at [All Day DevOps](https://github.com/appsecco/alldaydevops-aism) and DevOps Days India conference. Updated step by step documentation and virtual machines are avilable at [https://github.com/appsecco/nullblr-bachaav-aismd](https://github.com/appsecco/nullblr-bachaav-aismd)
